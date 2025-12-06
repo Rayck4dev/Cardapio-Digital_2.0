@@ -1,3 +1,417 @@
-@tailwind base;
+@import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Dancing+Script:wght@400..700&family=Edu+NSW+ACT+Cursive:wght@400..700&family=Pacifico&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Quicksand:wght@300..700&display=swap");
+
+@import "./styles/variables.css" @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sombra - Botões */
+
+.sombra-pudins:hover {
+  box-shadow: 0 0 15px #f7c59f;
+}
+
+.sombra-especiais:hover {
+  box-shadow: 0 0 15px #c2b6ff;
+}
+
+.sombra-geladinhos:hover {
+  box-shadow: 0 0 15px #a0e0ff;
+}
+
+.botao-hover:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.botao-mobile:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Fundo  */
+
+.fundo-coracoes {
+  background-image: url("./assets/fundoatual.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  opacity: 0.9;
+}
+
+.emoji-caindo {
+  position: absolute;
+  top: 0;
+  font-size: 2rem;
+  animation: cair 5s linear forwards;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes cair {
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Layout da seção */
+
+.secao-cardapio {
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 40px;
+}
+
+.grid-cardapio {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 10px;
+}
+
+@media (min-width: 768px) {
+  .grid-cardapio {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-cardapio {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+}
+
+/* Cards */
+
+.card-item {
+  background: #fff8f0;
+  border: 2px solid #ffaaad;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  border-color: #f7c59f;
+}
+
+.card-item h3 {
+  font-family: "Caveat Brush", cursive;
+  font-size: 1.7em;
+  color: #401900;
+  margin: 5px 0;
+}
+
+.card-item p {
+  font-size: 1.3em;
+  font-family: "Emilys Candy";
+  color: #db9e32;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.foto-produto {
+  width: 90%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* Menu */
+
+@keyframes aparecerBotao {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.botao-animado {
+  animation: aparecerBotao 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes desaparecerBotao {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+}
+
+.botao-animado {
+  opacity: 0;
+  animation: aparecerBotao 0.4s ease-out forwards;
+}
+
+.botao-animado.saindo {
+  animation: desaparecerBotao 0.3s ease-in forwards;
+}
+
+/* Fundo Pudins */
+
+.fundo-pudins {
+  position: relative;
+  background: linear-gradient(to bottom, #fff8f0, #f7c59f);
+  overflow: hidden;
+}
+
+.fundo-pudins::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 220, 180, 0.3) 2px,
+    transparent 2px
+  );
+  background-size: 40px 40px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+  animation: fundoAnimado 12s linear infinite;
+}
+
+@keyframes fundoAnimado {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100px 100px;
+  }
+}
+
+/* Título Pudim */
+
+.titulo-cardapio {
+  position: relative;
+  z-index: 1;
+  font-family: "Emilys Candy";
+  font-size: 2.5em;
+  color: #401900;
+  margin: 30px 0px;
+  text-align: center;
+}
+
+.titulo-cardapio::before {
+  content: "";
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 1.3em;
+  background-color: #f7c59f;
+  border-radius: 10px;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* Fundo Especiais */
+
+.fundo-especiais {
+  position: relative;
+  background: linear-gradient(to bottom, #f9f7ff, #c2b6ff);
+  overflow: hidden;
+}
+
+.fundo-especiais::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(180, 160, 255, 0.3) 2px,
+    transparent 2px
+  );
+  background-size: 40px 40px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+  animation: fundoAnimado 12s linear infinite;
+}
+
+@keyframes fundoAnimado {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100px 100px;
+  }
+}
+
+/* Titulo Especiais */
+
+.titulo-especial {
+  position: relative;
+  z-index: 1;
+  font-family: "Emilys Candy";
+  font-size: 2.5em;
+  color: #3c2a6e;
+  margin: 30px 0px;
+  text-align: center;
+}
+
+.titulo-especial::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 1.3em;
+  background-color: #c2b6ff;
+  border-radius: 10px;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* Fundo Gelado */
+
+.fundo-gelado {
+  position: relative;
+  background: linear-gradient(to bottom, #f0faff, #b3e5fc);
+  overflow: hidden;
+}
+
+.fundo-gelado::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(150, 220, 255, 0.3) 2px,
+    transparent 2px
+  );
+  background-size: 40px 40px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+  animation: fundoAnimado 12s linear infinite;
+}
+
+@keyframes fundoAnimado {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100px 100px;
+  }
+}
+
+/* Titulo Gelado */
+
+.titulo-gelado {
+  position: relative;
+  z-index: 1;
+  font-family: "Emilys Candy";
+  font-size: 2.5em;
+  color: #003366;
+  margin: 30px 0px;
+  text-align: center;
+}
+
+.titulo-gelado::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 1.3em;
+  background-color: #b3e5fc;
+  border-radius: 10px;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* Mobile refinado */
+
+@media (max-width: 480px) {
+  .titulo-cardapio {
+    font-size: 1.9em;
+    margin: 20px 0;
+  }
+
+  .subtitulo-cardapio {
+    font-size: 1.4em;
+    padding: 8px;
+  }
+
+  .foto-produto {
+    width: 100%;
+    height: 280px;
+    border-radius: 8px;
+  }
+
+  .card-item h3 {
+    font-size: 1.3em;
+  }
+
+  .card-item p {
+    font-size: 1.1em;
+  }
+
+  .card-item {
+    padding: 12px;
+    border-radius: 12px;
+  }
+}
+
+/* Chuva Animada */
+
+.chuva-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.chuva-item {
+  position: absolute;
+  top: -10vh;
+  animation: cair 8s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes cair {
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
