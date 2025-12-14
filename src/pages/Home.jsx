@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import logo from "../assets/LOGOSVG.svg";
 import fundo from "../assets/fundoatual.png";
 import EmojiRain from "../components/EmojiRain.jsx";
 import { FaWhatsapp, FaInstagram, FaUtensils } from "react-icons/fa";
 
 export default function Home() {
+useEffect(() => {
+    document.title = "Delicias no Pote";
+  }, []);
+
   return (
     <div
       className="min-h-screen w-full flex flex-col items-center justify-center text-center px-4 py-8 relative "

@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Dancing+Script:wght@400..700&family=Edu+NSW+ACT+Cursive:wght@400..700&family=Pacifico&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Quicksand:wght@300..700&display=swap");
 
 @import "./styles/variables.css" @tailwind base;
@@ -106,6 +104,7 @@ html {
 /* Cards */
 
 .card-item {
+  position: relative;
   background: #fff8f0;
   border: 2px solid #ffaaad;
   border-radius: 15px;
@@ -125,7 +124,7 @@ html {
   font-family: "Caveat Brush", cursive;
   font-size: 1.7em;
   color: #401900;
-  margin: 5px 0;
+  margin: 15px 5px;
 }
 
 .card-item p {
@@ -137,8 +136,8 @@ html {
 }
 
 .foto-produto {
-  width: 90%;
-  height: 280px;
+  width: 100%;
+  height: 26em;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -300,6 +299,100 @@ html {
   opacity: 0.3;
 }
 
+.caixas-poeticas-container {
+  width: 100%;
+  max-width: 70%;
+  margin: 0 auto 2rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.caixa-poetica {
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.poetico-nome {
+  font-family: "Emilys Candy";
+  font-size: 1.5rem;
+  color: #9d174d;
+  margin-bottom: 0.4rem;
+}
+
+.poetico-texto {
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Quicksand";
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.tag-tipo {
+  position: absolute;
+  top: 65%;
+  left: 72%;
+  transform: translateX(-50%);
+  font-family: "Emilys Candy", cursive;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.9rem 1.9rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  white-space: nowrap;
+  animation: flutuar 3s ease-in-out infinite;
+}
+
+.tag-especial-tipo {
+  position: absolute;
+  top: 65%;
+  left: 78%;
+  transform: translateX(-50%);
+  font-family: "Emilys Candy", cursive;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 9999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  white-space: nowrap;
+  animation: flutuar 3s ease-in-out infinite;
+}
+
+.tag-tipo.porcao {
+  background-color: #fde68a;
+  color: #92400e;
+}
+
+.tag-especial-tipo.copo {
+  padding: 0.8rem 2.1rem;
+  background-color: #fbcfe8;
+  color: #9d174d;
+}
+
+.tag-especial-tipo.travessa {
+  padding: 0.7rem 1.8rem;
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+
+@keyframes flutuar {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-4px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 /* Fundo Gelado */
 
 .fundo-gelado {
@@ -359,39 +452,6 @@ html {
   opacity: 0.3;
 }
 
-/* Mobile refinado */
-
-@media (max-width: 480px) {
-  .titulo-cardapio {
-    font-size: 1.9em;
-    margin: 20px 0;
-  }
-
-  .subtitulo-cardapio {
-    font-size: 1.4em;
-    padding: 8px;
-  }
-
-  .foto-produto {
-    width: 100%;
-    height: 280px;
-    border-radius: 8px;
-  }
-
-  .card-item h3 {
-    font-size: 1.3em;
-  }
-
-  .card-item p {
-    font-size: 1.1em;
-  }
-
-  .card-item {
-    padding: 12px;
-    border-radius: 12px;
-  }
-}
-
 /* Chuva Animada */
 
 .chuva-container {
@@ -411,7 +471,630 @@ html {
 }
 
 @keyframes cair {
-  0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-  20% { opacity: 1; }
-  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Painel Adm */
+
+.paineladmin-global * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.paineladmin-global {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.paineladmin-wrapper {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.paineladmin-wrapper h1 {
+  font-family: "Quicksand";
+  font-size: 1.9rem;
+  color: #401900;
+  margin-bottom: 10px;
+}
+
+.paineladmin-wrapper p {
+  font-family: "Caveat Brush";
+  font-size: 1.75rem;
+  color: #c4722d;
+  margin-bottom: 30px;
+}
+
+.paineladmin-opcoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.paineladmin-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-decoration: none;
+  color: #000;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.paineladmin-card:hover {
+  background-color: #ffa4a7;
+  color: #401900;
+}
+
+.paineladmin-card span {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.paineladmin-card h2 {
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.paineladmin-card p {
+  font-size: 17px;
+  color: #000;
+  font-family: "Emilys Candy";
+  margin: 5px;
+  margin-top: 8px;
+}
+
+.paineladmin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.logout-btn {
+  font-family: "Emilys Candy";
+  background-color: #ff4d8b;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: #e63f7a;
+  transform: scale(1.05);
+}
+
+.logout-btn:active {
+  transform: scale(0.97);
+}
+
+/* Painel Adicionar */
+
+.paineladicionar-bg {
+  background: linear-gradient(135deg, #ffb3c6 0%, #ffe5a5 35%, #b3e5ff 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paineladicionar-wrapper {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 650px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.paineladicionar-wrapper h1 {
+  font-family: "Emilys Candy";
+  color: #c4722d;
+  margin-bottom: 10px;
+  font-size: 32px;
+}
+
+.paineladicionar-wrapper p {
+  font-family: "Quicksand";
+  margin-bottom: 25px;
+  font-size: 16px;
+}
+
+.paineladicionar-form input,
+.paineladicionar-form select {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  margin-bottom: 25px;
+  padding: 12px;
+  border-radius: 8px;
+  width: 96%;
+  font-size: 15px;
+  font-family: "Quicksand";
+}
+
+.paineladicionar-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 15px;
+  font-family: "Quicksand";
+
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5.516 7.548l4.484 4.484 4.484-4.484L16 8.548l-6 6-6-6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+}
+
+.paineladicionar-form select:focus {
+  border-color: #ff9f1c;
+  outline: none;
+  box-shadow: 0 0 4px rgba(255, 159, 28, 0.6);
+}
+
+.paineladicionar-preview-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.paineladicionar-remover {
+  background-color: #e1002a;
+  color: #fff;
+  margin-bottom: 25px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Quicksand";
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.paineladicionar-remover:hover {
+  background-color: #b30020;
+}
+
+.paineladicionar-botao {
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+  font-family: "Quicksand";
+  cursor: pointer;
+  transition: 0.3s ease;
+  width: 100%;
+}
+
+.paineladicionar-botao:hover {
+  background-color: #1e7e34;
+}
+
+.paineladicionar-upload-input {
+  display: none;
+}
+
+.paineladicionar-upload-label {
+  display: inline-block;
+  background-color: #ffbcbe;
+  color: #000000;
+  margin-bottom: 25px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-family: "Quicksand";
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.paineladicionar-upload-label:hover {
+  background-color: #ffa4a7;
+}
+
+.paineladicionar-erro {
+  color: #e1002a;
+  font-size: 14px;
+  margin-top: 6px;
+  font-family: "Caveat Brush";
+}
+
+.paineladicionar-voltar-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.paineladicionar-voltar {
+  margin-top: 16px;
+  background-color: #ccc;
+  color: #333;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Quicksand";
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.paineladicionar-voltar:hover {
+  background-color: #b5b5b5;
+}
+
+/* Painel Produtos */
+
+.produtos-container {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.produtos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.produtos-header h1 {
+  font-family: "Quicksand";
+  color: #000;
+  font-size: 2.2rem;
+}
+
+.produtos-add {
+  background-color: #401900;
+  color: #c4722d;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: "Caveat Brush";
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.produtos-add:hover {
+  background-color: #692902;
+}
+
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.produto-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 95%;
+}
+
+.produto-card {
+  font-family: "Quicksand";
+  color: #000;
+  font-size: 1rem;
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+
+.produto-img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.produto-preco {
+  font-family: "Quicksand";
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.produto-actions {
+  gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.produto-editar {
+  background: #401900;
+  color: #c4722d;
+  font-size: 1.1rem;
+  font-family: "Caveat Brush";
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.produto-excluir {
+  background: #e1002a;
+  color: #fff;
+  font-family: "Quicksand";
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.preco-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.preco-linha {
+  font-size: 1.1rem;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.tag-peso {
+  background: #fef3c7;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.tag-preco {
+  background: #d1fae5;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+/* Edição Produtos  */
+
+.editar-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.editar-card {
+  width: 100%;
+  text-align: center;
+}
+
+.editar-img {
+  width: 100%;
+  height: 850px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Formulário */
+.editar-form {
+  margin-top: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.editar-form label {
+  font-weight: bold;
+  font-family: "Quicksand";
+}
+
+.editar-form input,
+.editar-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: "Quicksand";
+  font-size: 1rem;
+}
+
+/* Botões */
+.editar-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  gap: 15px;
+}
+
+.editar-salvar {
+  flex: 1;
+  background: #401900;
+  color: #c4722d;
+  font-size: 1.2rem;
+  font-family: "Caveat Brush";
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.editar-excluir {
+  flex: 1;
+  background: #e1002a;
+  color: #fff;
+  font-family: "Quicksand";
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.editar-voltar {
+  flex: 1;
+  background-color: #ccc;
+  color: #333;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Quicksand";
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: 0.3s ease;
+}
+
+.editar-voltar:hover {
+  background-color: #b5b5b5;
+}
+
+.botao-imagem {
+  display: inline-block;
+  background-color: #ffbcbe;
+  color: #000000;
+  margin-top: 5px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-family: "Quicksand";
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.botao-imagem:hover {
+  background-color: #ffa4a7;
+}
+
+/* Login e Cadastro */
+
+.login-container {
+  min-height: 100vh;
+  width: 100%;
+  background: #ffe6f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container h1 {
+  font-family: "Quicksand";
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff4fa3;
+  margin-bottom: 10px;
+}
+
+.login-container p {
+  font-family: "Quicksand";
+  font-weight: bold;
+  color: #444;
+  margin-top: 10px;
+}
+
+.login-form {
+  background: #fff;
+  width: 100%;
+  max-width: 380px;
+  padding: 55px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(255, 0, 128, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.login-form input,
+.login-form button {
+  width: 60%;
+  max-width: 320px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 2px solid #ffd0e6;
+  background: #fff;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+.login-form input:focus {
+  border-color: #ff4fa3;
+  outline: none;
+}
+
+.login-form button {
+  background: #ff4fa3;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.login-form button:hover {
+  background: #ff2f8f;
+}
+
+.login-container a {
+  color: #ff4fa3;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}
+
+.senha-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 297px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.senha-wrapper input {
+  width: 100%;
+  padding-right: 40px;
 }

@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import fundo from "../assets/fundoatual.png";
 import logo from "../assets/LOGOSVG.svg";
 import { Link } from "react-router-dom";
 import ChuvaAnimada from "../components/ChuvaAnimada";
 
 export default function EscolhaCategoria() {
+  useEffect(() => {
+    document.title = "Categorias | Delicias no Pote";
+  }, []);
+
   const categorias = [
     {
       id: "pudins",
@@ -49,7 +54,6 @@ export default function EscolhaCategoria() {
         </a>
       </div>
 
-      {/* Título principal */}
       <h1
         style={{ fontFamily: '"Caveat Brush", cursive', color: "#401900" }}
         className="text-[3.2em] mb-[5px]"
@@ -57,7 +61,6 @@ export default function EscolhaCategoria() {
         Delícias no Pote
       </h1>
 
-      {/* Pergunta criativa */}
       <h2
         className="text-[2.2em] text-[#c4722d] mt-[5px] text-center p-[12px]"
         style={{
@@ -67,7 +70,6 @@ export default function EscolhaCategoria() {
         O que adoça seu dia hoje?
       </h2>
 
-      {/* Botões temáticos */}
       <div className="flex flex-col text-center gap-[15px] ">
         {categorias.map((cat) => (
           <Link
@@ -86,7 +88,6 @@ export default function EscolhaCategoria() {
 
       <ChuvaAnimada emoji="🍮" quantidade={15} cor="#db9e32" duracao={60} />
 
-      {/* Subtítulo introdutório */}
       <p
         className="text-[1.3rem] text-[#401900] p-[12px] text-center max-w-md"
         style={{

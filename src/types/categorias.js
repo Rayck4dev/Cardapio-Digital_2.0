@@ -1,32 +1,32 @@
-import leiteCondensadoImg from "../photos/pudimleitecondensado.jpeg";
-import PudimLeiteCondensadoPorcao from "../photos/pudimporcao.jpeg";
-import leiteNinhoImg from "../photos/pudimleiteninho.jpeg";
-import doceDeLeiteImg from "../photos/pudimdocedeleite.jpeg";
-import chocolateBrancoMorangoImg from "../photos/pudimcomgeleia.jpeg";
-import ninhoNutellaImg from "../photos/pudimcomnutella.jpeg";
-import brownieImg from "../photos/pudimbrownie.jpeg";
-import pacocaImg from "../photos/pudimpacoca.jpeg";
-import chocolateImg from "../photos/pudimchocolate.jpeg";
-import quatroLeitesCocoImg from "../photos/pudimcomcoco.jpeg";
-import cafeImg from "../photos/pudimcafe.jpeg";
+import leiteCondensadoImg from "../../public/photos/pudimleitecondensado.jpeg";
+import PudimLeiteCondensadoPorcao from "../../public/photos/pudimporcao.jpeg";
+import leiteNinhoImg from "../../public/photos/pudimleiteninho.jpeg";
+import doceDeLeiteImg from "../../public/photos/pudimdocedeleite.jpeg";
+import chocolateBrancoMorangoImg from "../../public/photos/pudimcomgeleia.jpeg";
+import ninhoNutellaImg from "../../public/photos/pudimcomnutella.jpeg";
+import brownieImg from "../../public/photos/pudimbrownie.jpeg";
+import pacocaImg from "../../public/photos/pudimpacoca.jpeg";
+import chocolateImg from "../../public/photos/pudimchocolate.jpeg";
+import quatroLeitesCocoImg from "../../public/photos/pudimcomcoco.jpeg";
+import cafeImg from "../../public/photos/pudimcafe.jpeg";
 
-import pudimFelicidadeImg from "../photos/copopudimfelicidade.jpeg";
+import pudimFelicidadeImg from "../../public/photos/copopudimfelicidade.jpeg";
 
-import banoffeCopoImg from "../photos/banoffecopo.jpeg";
-import banoffeTravessaImg from "../photos/banoffetravessa.jpeg";
+import banoffeCopoImg from "../../public/photos/banoffecopo.jpeg";
+import banoffeTravessaImg from "../../public/photos/banoffetravessa.jpeg";
 
-import paveCopoImg from "../photos/pavecopo.jpeg";
-import paveTravessaImg from "../photos/pavetravessa.jpeg";
+import paveCopoImg from "../../public/photos/pavecopo.jpeg";
+import paveTravessaImg from "../../public/photos/pavetravessa.jpeg";
 
-import geladinhoPudimImg from "../photos/geladinhopudim.jpeg";
-import geladinhoNutellaImg from "../photos/geladinhonutella.jpeg";
-import geladinhoMorangoImg from "../photos/geladinhocomgeleia.jpeg";
-import geladinhoQuatroLeitesImg from "../photos/geladinhocomcoco.jpeg";
+import geladinhoPudimImg from "../../public/photos/geladinhopudim.jpeg";
+import geladinhoNutellaImg from "../../public/photos/geladinhonutella.jpeg";
+import geladinhoMorangoImg from "../../public/photos/geladinhocomgeleia.jpeg";
+import geladinhoQuatroLeitesImg from "../../public/photos/geladinhocomcoco.jpeg";
 
 export const pudins = [
   {
     nome: "Leite Condensado",
-    preco: "500g R$30,00 | 1kg R$55,00",
+    preco: "500g - R$30,00 | 1kg - R$55,00",
     imagem: leiteCondensadoImg,
   },
   {
@@ -100,7 +100,7 @@ export const especiais = [
 
   {
     nome: "Pavê",
-    preco: "Copo R$8,00 | Travessa 1,4kg R$75,00",
+    preco: "Copo R$8,00",
     imagem: paveCopoImg,
   },
   {
