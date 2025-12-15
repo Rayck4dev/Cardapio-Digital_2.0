@@ -2,18 +2,22 @@ import { useState, useEffect, useRef } from "react";
 import { supabase } from "../config/supabaseClient";
 import { useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
-import { toast } from "react-toastify";
+
+import PriceList from "../components/PriceList";
+import ImageUploader from "../components/ImageUploader";
+import CategorySelect from "../components/CategorySelect";
+import TypeSelect from "../components/TypeSelect";
 
 export default function AddProduto() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
     name: "",
-    price: "",
     category_id: "",
     tipo: "",
   });
 
+  const [precos, setPrecos] = useState([{ label: "", valor: "" }]);
   const [loading, setLoading] = useState(false);
   const [imageError, setImageError] = useState("");
   const [foto, setFoto] = useState(null);
@@ -24,11 +28,7 @@ export default function AddProduto() {
   useEffect(() => {
     async function carregarCategorias() {
       const { data, error } = await supabase.from("categories_ofc").select("*");
-      if (error) {
-        toast.error("Erro ao carregar categorias");
-        return;
-      }
-      setCategorias(data);
+      if (!error) setCategorias(data);
     }
     carregarCategorias();
   }, []);
@@ -43,12 +43,13 @@ export default function AddProduto() {
     if (fileInputRef.current) fileInputRef.current.value = "";
   }
 
-  function formatarPreco(valor) {
+  function formatarValor(valor) {
     const apenasNumeros = valor.replace(/\D/g, "");
     const numero = (parseInt(apenasNumeros, 10) || 0) / 100;
+
     return numero.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     });
   }
 
@@ -59,45 +60,52 @@ export default function AddProduto() {
 
     try {
       if (!foto) {
+        setLoading(false);
         setImageError("Selecione uma imagem antes de salvar.");
-        toast.error("Você precisa selecionar uma imagem.");
         return;
       }
 
       const fileName = `${Date.now()}_${foto.name}`;
 
       const { error: uploadError } = await supabase.storage
-        .from("produtos") 
-        .upload(fileName, foto, {
-          cacheControl: "3600",
-          upsert: false,
-        });
+        .from("produtos")
+        .upload(fileName, foto);
 
       if (uploadError) {
-        console.error("Erro upload:", uploadError); 
-        toast.error("Erro ao enviar a imagem.");
+        setLoading(false);
         return;
       }
+
+      const precoFinal = precos
+        .filter((p) => p.valor)
+        .map((p) => (p.label ? `${p.label} R$${p.valor}` : `R$${p.valor}`))
+        .join(" | ");
 
       const { error } = await supabase.from("products_ofc").insert([
         {
           ...form,
+          price: precoFinal,
           image_url: fileName,
         },
       ]);
 
-      if (error) {
-        console.error("Erro insert:", error);
-        toast.error("Erro ao salvar o produto.");
-        return;
+      if (!error) {
+        navigate("/admin/produtos");
       }
 
-      toast.success("Produto adicionado com sucesso!");
-      navigate("/admin/produtos");
-    } finally {
+      setLoading(false);
+    } catch (err) {
       setLoading(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="loading-overlay">
+        <ClipLoader size={60} color="#ff4fa3" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center paineladicionar-bg">
@@ -113,76 +121,34 @@ export default function AddProduto() {
             required
           />
 
-          <input
-            type="text"
-            placeholder="Preço"
-            value={form.price}
-            onChange={(e) => {
-              const valorFormatado = formatarPreco(e.target.value);
-              setForm({ ...form, price: valorFormatado });
-            }}
-            required
-          />
-
-          <select
+          <CategorySelect
+            categorias={categorias}
             onChange={(e) => setForm({ ...form, category_id: e.target.value })}
-            required
-          >
-            <option value="">Selecione a categoria</option>
-            {categorias.map((cat) => (
-              <option key={cat.id} value={cat.id}>
-                {cat.name}
-              </option>
-            ))}
-          </select>
-
-          <select onChange={(e) => setForm({ ...form, tipo: e.target.value })}>
-            <option value="">Selecione o tipo</option>
-            <option value="porcao">Porção Individual</option>
-            <option value="copo">Copo</option>
-            <option value="travessa">Travessa</option>
-            <option value="">Nenhum</option>
-          </select>
-
-          <label htmlFor="foto" className="paineladicionar-upload-label">
-            Escolher imagem
-          </label>
-
-          <input
-            type="file"
-            id="foto"
-            ref={fileInputRef}
-            className="paineladicionar-upload-input"
-            accept="image/*"
-            onChange={(e) => {
-              const file = e.target.files[0];
-              if (!file) return;
-              setFoto(file);
-              setPreview(URL.createObjectURL(file));
-            }}
           />
 
-          {preview && (
-            <div className="paineladicionar-preview-container">
-              <img src={preview} className="paineladicionar-preview" />
-              <button
-                type="button"
-                className="paineladicionar-remover"
-                onClick={removerImagem}
-              >
-                Remover imagem
-              </button>
-            </div>
-          )}
+          <TypeSelect
+            onChange={(e) => setForm({ ...form, tipo: e.target.value })}
+          />
+
+          <PriceList
+            precos={precos}
+            setPrecos={setPrecos}
+            formatarValor={formatarValor}
+          />
+
+          <ImageUploader
+            foto={foto}
+            setFoto={setFoto}
+            preview={preview}
+            setPreview={setPreview}
+            fileInputRef={fileInputRef}
+            removerImagem={removerImagem}
+          />
 
           {imageError && <p className="paineladicionar-erro">{imageError}</p>}
 
-          <button
-            className="paineladicionar-botao"
-            type="submit"
-            disabled={loading}
-          >
-            {loading ? <ClipLoader size={22} color="#fff" /> : "Salvar Produto"}
+          <button className="paineladicionar-botao" type="submit">
+            Salvar Produto
           </button>
         </form>
 

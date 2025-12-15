@@ -34,10 +34,14 @@ export default function Geladinhos() {
       <section className="secao-cardapio">
         <div className="grid-cardapio">
           {produtos.map((item) => (
-            <div key={item.id} className="card-item card-geladinhos produto-card relative">
-
+            <div
+              key={item.id}
+              className="card-item card-geladinhos produto-card relative"
+            >
               <img
-                src={`/photos/${item.image_url}`}
+                src={`${
+                  import.meta.env.VITE_SUPABASE_URL
+                }/storage/v1/object/public/produtos/${item.image_url}`}
                 alt={item.name}
                 className="foto-produto"
               />
@@ -67,7 +71,6 @@ export default function Geladinhos() {
                   );
                 })}
               </div>
-
             </div>
           ))}
         </div>

@@ -5,7 +5,7 @@ import EmojiRain from "../components/EmojiRain.jsx";
 import { FaWhatsapp, FaInstagram, FaUtensils } from "react-icons/fa";
 
 export default function Home() {
-useEffect(() => {
+  useEffect(() => {
     document.title = "Delicias no Pote";
   }, []);
 
@@ -19,7 +19,6 @@ useEffect(() => {
         backgroundRepeat: "no-repeat",
       }}
     >
-
       <div className="bg-white p-2 rounded-[20%] border-8 border-[#ffffff] shadow-[0_4px_12px_rgba(0,0,0,0.2)] h-[120px] w-[120px] flex items-center justify-center overflow-hidden mt-6 mb-4 z-[1] relative">
         <img
           src={logo}
@@ -46,7 +45,7 @@ useEffect(() => {
       >
         Produção Artesanal
       </p>
- <div className="flex flex-col items-center gap-[15px] mt-[35px] z-[1]">
+      <div className="flex flex-col items-center gap-[15px] mt-[35px] z-[1]">
         <a
           href="/escolha"
           style={{ fontFamily: '"Caveat Brush", cursive', fontWeight: "bold" }}

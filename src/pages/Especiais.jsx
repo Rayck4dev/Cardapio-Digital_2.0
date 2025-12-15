@@ -28,7 +28,6 @@ export default function Especiais() {
     fetchProdutos();
   }, []);
 
-
   return (
     <div className="min-h-screen w-full fundo-pudins relative flex flex-col items-center px-4 py-12 z-[1]">
       <h1 className="titulo-especial">✨ Especiais</h1>
@@ -49,7 +48,6 @@ export default function Especiais() {
               key={item.id}
               className="card-item produto-card card-especiais relative"
             >
-              {/* ✅ Bannerzinho */}
               {item.tipo && (
                 <div className={`tag-especial-tipo ${item.tipo}`}>
                   {item.tipo === "copo" && "Copo"}
@@ -58,17 +56,16 @@ export default function Especiais() {
                 </div>
               )}
 
-              {/* ✅ Imagem */}
               <img
-                src={`/photos/${item.image_url}`}
+                src={`${
+                  import.meta.env.VITE_SUPABASE_URL
+                }/storage/v1/object/public/produtos/${item.image_url}`}
                 alt={item.name}
                 className="foto-produto"
               />
 
-              {/* ✅ Nome */}
               <h3>{item.name}</h3>
 
-              {/* ✅ Preços */}
               <div className="preco-container">
                 {item.price.split("|").map((opcao, i) => {
                   const partes = opcao.trim().split(" R$");

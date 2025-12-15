@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function ChuvaAnimada({
-  emoji = "❄️",       
-  quantidade = 15,        
-}) {
+export default function ChuvaAnimada({ emoji = "❄️", quantidade = 15 }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -12,8 +9,8 @@ export default function ChuvaAnimada({
       arr.push({
         id: i,
         left: `${Math.random() * 100}%`,
-        delay: `${Math.random() * 5}s`, 
-        size: `${Math.random() * 1.5 + 1}em`
+        delay: `${Math.random() * 5}s`,
+        size: `${Math.random() * 1.5 + 1}em`,
       });
     }
     setItems(arr);

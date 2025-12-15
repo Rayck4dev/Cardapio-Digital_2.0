@@ -71,7 +71,9 @@ export default function Pudins() {
               )}
 
               <img
-                src={`/photos/${item.image_url}`}
+                src={`${
+                  import.meta.env.VITE_SUPABASE_URL
+                }/storage/v1/object/public/produtos/${item.image_url}`}
                 alt={item.name}
                 className="foto-produto"
               />
