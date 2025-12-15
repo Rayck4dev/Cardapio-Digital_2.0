@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import logo from "../assets/LOGOSVG.svg";
 import fundo from "../assets/fundoatual.png";
 import EmojiRain from "../components/EmojiRain.jsx";
+import HiddenAdminTrigger from "../components/HiddenAdminTrigger.jsx";
 import { FaWhatsapp, FaInstagram, FaUtensils } from "react-icons/fa";
 
 export default function Home() {
@@ -19,13 +20,16 @@ export default function Home() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="bg-white p-2 rounded-[20%] border-8 border-[#ffffff] shadow-[0_4px_12px_rgba(0,0,0,0.2)] h-[120px] w-[120px] flex items-center justify-center overflow-hidden mt-6 mb-4 z-[1] relative">
-        <img
-          src={logo}
-          alt="Logo Delícias no Pote"
-          className="h-full w-full object-contain"
-        />
-      </div>
+      {/* LOGO ENVOLVIDA PELO ATALHO SECRETO */}
+      <HiddenAdminTrigger>
+        <div className="bg-white p-2 rounded-[20%] border-8 border-[#ffffff] shadow-[0_4px_12px_rgba(0,0,0,0.2)] h-[120px] w-[120px] flex items-center justify-center overflow-hidden mt-6 mb-4 z-[1] relative">
+          <img
+            src={logo}
+            alt="Logo Delícias no Pote"
+            className="h-full w-full object-contain"
+          />
+        </div>
+      </HiddenAdminTrigger>
 
       <h1
         style={{ fontFamily: '"Caveat Brush", cursive', color: "#401900" }}
@@ -35,6 +39,7 @@ export default function Home() {
       </h1>
 
       <EmojiRain />
+
       <p
         style={{
           fontFamily: '"Caveat Brush", cursive',
@@ -45,6 +50,7 @@ export default function Home() {
       >
         Produção Artesanal
       </p>
+
       <div className="flex flex-col items-center gap-[15px] mt-[35px] z-[1]">
         <a
           href="/escolha"

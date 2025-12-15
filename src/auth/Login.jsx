@@ -40,7 +40,7 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <h1>Entrar</h1>
+      <h1>Painel Administrativo</h1>
 
       <form onSubmit={handleLogin} className="login-form">
         <input
