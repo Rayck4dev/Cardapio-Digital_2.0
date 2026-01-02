@@ -61,7 +61,7 @@ export default function Home() {
         </a>
 
         <a
-          href="https://wa.me/556999974993"
+          href="https://wa.link/ek35qv"
           target="_blank"
           rel="noopener noreferrer"
           style={{ fontFamily: '"Caveat Brush", cursive', fontWeight: "bold" }}

@@ -42,7 +42,7 @@ export default function MenuFlutuante() {
 
           {/* Botão WhatsApp */}
           <a
-            href="https://wa.me/556999974993"
+            href="https://wa.link/ek35qv"
             target="_blank"
             rel="noopener noreferrer"
             style={{
