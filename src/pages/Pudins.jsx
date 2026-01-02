@@ -15,7 +15,8 @@ export default function Pudins() {
       const { data, error } = await supabase
         .from("products_ofc")
         .select("*")
-        .eq("category_id", "7bf3f151-a575-4c7b-bf5c-57da2cc0af74");
+        .eq("category_id", "7bf3f151-a575-4c7b-bf5c-57da2cc0af74")
+        .order("ordem", { ascending: true });
 
       if (error) {
         console.error(error);
