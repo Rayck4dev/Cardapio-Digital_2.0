@@ -2,7 +2,13 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Quicksand:wght@300..700&display=swap");
 
-@import "./styles/variables.css" @tailwind base;
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400..900&family=Press+Start+2P&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+
+@import "./styles/variables.css" 
+
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -1268,7 +1274,7 @@ html {
 
 .foto-produto {
   width: 100%;
-  height: 18em;
+  height: 28em;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;

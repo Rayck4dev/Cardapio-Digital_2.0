@@ -7,6 +7,7 @@ import EscolhaCategoria from "./pages/EscolhaCategoria.jsx";
 import Pudins from "./pages/Pudins.jsx";
 import Especiais from "./pages/Especiais.jsx";
 import Geladinhos from "./pages/Geladinhos.jsx";
+import Picolés from "./pages/Picolés.jsx";
 
 // Rotas da ADM
 import Dashboard from "../src/admin/Dashboard.jsx";
@@ -27,6 +28,7 @@ export default function AppRoutes() {
       <Route path="/pudins" element={<Pudins />} />
       <Route path="/especiais" element={<Especiais />} />
       <Route path="/geladinhos" element={<Geladinhos />} />
+      <Route path="/picoles" element={<Picolés />} />
 
       {/* ✅ Rotas da ADM */}
       <Route

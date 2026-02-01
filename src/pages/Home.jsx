@@ -12,72 +12,53 @@ export default function Home() {
 
   return (
     <div
-      className="min-h-screen w-full flex flex-col items-center justify-center text-center px-4 py-8 relative "
-      style={{
-        backgroundImage: `url(${fundo})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+      className="min-h-screen w-full flex flex-col items-center justify-center text-center relative bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${fundo})` }}
     >
-      {/* LOGO ENVOLVIDA PELO ATALHO SECRETO */}
       <HiddenAdminTrigger>
-        <div className="bg-white p-2 rounded-[20%] border-8 border-[#ffffff] shadow-[0_4px_12px_rgba(0,0,0,0.2)] h-[120px] w-[120px] flex items-center justify-center overflow-hidden mt-6 mb-4 z-[1] relative">
+        <div className="bg-white p-2 rounded-[20%] border-8 border-white shadow-lg h-[120px] w-[120px] flex items-center justify-center overflow-hidden mb-2 z-[1] relative">
           <img
             src={logo}
             alt="Logo Delícias no Pote"
-            className="h-full w-full object-contain"
+            className="h-full w-full object-contain rounded-[20%] "
           />
         </div>
       </HiddenAdminTrigger>
 
-      <h1
-        style={{ fontFamily: '"Caveat Brush", cursive', color: "#401900" }}
-        className="text-[3.2em] mb-[5px]"
-      >
+      <h1 className="font-caveat text-[3.2em] mb-1 mt-6 text-[#401900]">
         Delícias no Pote
       </h1>
 
       <EmojiRain />
 
-      <p
-        style={{
-          fontFamily: '"Caveat Brush", cursive',
-          color: "#c4722d",
-          fontWeight: "bold",
-        }}
-        className="text-[1.8em] m-[5px] z-[1]"
-      >
+      <p className="font-caveat text-[1.8em] font-bold text-[#c4722d] m-1 z-[1]">
         Produção Artesanal
       </p>
 
-      <div className="flex flex-col items-center gap-[15px] mt-[35px] z-[1]">
+      <div className="flex flex-col items-center gap-8 mt-10 z-[1]">
         <a
           href="/escolha"
-          style={{ fontFamily: '"Caveat Brush", cursive', fontWeight: "bold" }}
-          className="flex items-center justify-center gap-[0.5rem] text-[#000000] bg-[#ffbcbe] hover:bg-[#ffa4a7] text-[1.3em] px-[100px] py-[15px] rounded-[15px] border border-[#ffaaad] shadow-[0_4px_8px_rgba(0,0,0,0.2)] m-[10px] no-underline transition duration-300"
+          className="flex items-center justify-center gap-3 text-black bg-[#ffbcbe] hover:bg-[#ffa4a7] text-xl px-2 py-4 rounded-xl border border-[#ffaaad] shadow-md no-underline transition-transform duration-300 hover:scale-105 font-caveat font-bold w-[280px] sm:w-[320px]"
         >
-          <FaUtensils /> CARDÁPIO
+          <FaUtensils className="text-2xl" /> CARDÁPIO
         </a>
 
         <a
           href="https://wa.link/ek35qv"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ fontFamily: '"Caveat Brush", cursive', fontWeight: "bold" }}
-          className="flex items-center justify-center gap-[0.5rem] text-[#000000] bg-[#ffbcbe] hover:bg-[#ffa4a7] text-[1.3em] px-[100px] py-[15px] rounded-[15px] border border-[#ffaaad] shadow-[0_4px_8px_rgba(0,0,0,0.2)] m-[10px] no-underline transition duration-300"
+          className="flex items-center justify-center gap-3 text-black bg-[#ffbcbe] hover:bg-[#ffa4a7] text-xl px-2 py-4 rounded-xl border border-[#ffaaad] shadow-md no-underline transition-transform duration-300 hover:scale-105 font-caveat font-bold w-[280px] sm:w-[320px]"
         >
-          <FaWhatsapp /> WHATSAPP
+          <FaWhatsapp className="text-2xl" /> WHATSAPP
         </a>
 
         <a
           href="https://instagram.com/deliciasnopote.rm"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ fontFamily: '"Caveat Brush", cursive', fontWeight: "bold" }}
-          className="flex items-center justify-center gap-[0.5rem] text-[#000000] bg-[#ffbcbe] hover:bg-[#ffa4a7] text-[1.3em] px-[100px] py-[15px] rounded-[15px] border border-[#ffaaad] shadow-[0_4px_8px_rgba(0,0,0,0.2)] m-[10px] no-underline transition duration-300"
+          className="flex items-center justify-center gap-3 text-black bg-[#ffbcbe] hover:bg-[#ffa4a7] text-xl px-2 py-4 rounded-xl border border-[#ffaaad] shadow-md no-underline transition-transform duration-300 hover:scale-105 font-caveat font-bold w-[280px] sm:w-[320px]"
         >
-          <FaInstagram /> INSTAGRAM
+          <FaInstagram className="text-2xl" /> INSTAGRAM
         </a>
       </div>
     </div>

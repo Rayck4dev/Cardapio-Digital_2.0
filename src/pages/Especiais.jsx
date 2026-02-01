@@ -29,7 +29,7 @@ export default function Especiais() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full fundo-pudins relative flex flex-col items-center px-4 py-12 z-[1]">
+    <div className="min-h-screen w-full fundo-pudins relative flex flex-col items-center z-[1]">
       <h1 className="titulo-especial">✨ Especiais</h1>
 
       <div className="caixas-poeticas-container">

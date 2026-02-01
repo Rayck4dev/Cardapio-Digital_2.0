@@ -1,4 +1,5 @@
 import AppRoutes from "./AppRoutes";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -6,6 +7,7 @@ function App() {
       <main>
         <AppRoutes />
       </main>
+      <Footer />
     </div>
   );
 }

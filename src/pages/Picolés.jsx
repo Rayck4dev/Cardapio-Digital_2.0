@@ -3,20 +3,26 @@ import { supabase } from "../config/supabaseClient";
 import MenuFlutuante from "../components/MenuFlutuante";
 import ChuvaAnimada from "../components/ChuvaAnimada";
 
-export default function Pudins() {
-  useEffect(() => {
-    document.title = "Pudins | Delicias no Pote";
-  }, []);
-
+export default function Picolés() {
   const [produtos, setProdutos] = useState([]);
+
+  const textosPoeticos = {
+    "Pudim de Chocolate Branco com Caramelo Crocante":
+      "Um picolé cremoso sabor pudim tradicional, trufado com calda de caramelo, cobertura com uma camada de chocolate branco com caramelo crocante",
+    "Pudim de Chocolate ao Leite":
+      "Um picolé cremoso sabor pudim tradicional, trufado com calda de caramelo, cobertura com uma camada crocante de chocolate ao leite",
+  };
+
+  useEffect(() => {
+    document.title = "Picolés | Delicias no Pote";
+  }, []);
 
   useEffect(() => {
     const fetchProdutos = async () => {
       const { data, error } = await supabase
         .from("products_ofc")
         .select("*")
-        .eq("category_id", "7bf3f151-a575-4c7b-bf5c-57da2cc0af74")
-        .order("ordem", { ascending: true });
+        .eq("category_id", "48bb168c-9488-49e7-b4bd-d3d077997184");
 
       if (error) {
         console.error(error);
@@ -28,35 +34,29 @@ export default function Pudins() {
     fetchProdutos();
   }, []);
 
-  function estiloTipo(tipo) {
-    const estilos = {
-      porcao: "bg-yellow-200 text-yellow-800",
-      copo: "bg-pink-200 text-pink-800",
-      travessa: "bg-indigo-200 text-indigo-800",
-    };
-
-    return estilos[tipo] || "bg-gray-100 text-gray-700";
-  }
-
   return (
-    <div className="min-h-screen w-full fundo-pudins relative flex flex-col items-center z-[1]">
-      <h1 className="titulo-cardapio">🍮 Pudins Gourmets</h1>
+    <div className="min-h-screen w-full bg-pink-100 relative flex flex-col items-center z-[1]">
+      <h1 className="titulo-cardapio text-pudimGelado">🍧 Picolés Gourmet</h1>
+
+      <div className="caixas-poeticas-container mb-10">
+        {Object.entries(textosPoeticos).map(([nome, texto]) => (
+          <div
+            key={nome}
+            className="caixa-poetica bg-[#fff8e7] shadow-md rounded-lg p-4 mb-4"
+          >
+            <h3 className="poetico-nome text-[#5a3e2b]">{nome}</h3>
+            <p className="poetico-texto text-[#3b82f6]">{texto}</p>
+          </div>
+        ))}
+      </div>
 
       <section className="secao-cardapio">
         <div className="grid-cardapio">
           {produtos.map((item) => (
             <div
               key={item.id}
-              className="card-item produto-card card-pudins relative"
+              className="card-item card-picole produto-card relative bg-gradient-to-b from-[#f5deb3] to-[#a7c7e7]"
             >
-              {item.tipo && (
-                <div className={`tag-tipo ${item.tipo}`}>
-                  {item.tipo === "porcao" && "Porção Individual"}
-                  {item.tipo === "copo" && "Copo"}
-                  {item.tipo === "travessa" && "Travessa"}
-                </div>
-              )}
-
               <img
                 src={`${
                   import.meta.env.VITE_SUPABASE_URL
@@ -65,7 +65,7 @@ export default function Pudins() {
                 className="foto-produto"
               />
 
-              <h3>{item.name}</h3>
+              <h3 className="text-[#5a3e2b]">{item.name}</h3>
 
               <div className="preco-container">
                 {item.price.split("|").map((opcao, i) => {
@@ -96,7 +96,7 @@ export default function Pudins() {
       </section>
 
       <MenuFlutuante />
-      <ChuvaAnimada emoji="🍮" quantidade={15} cor="#db9e32" duracao={60} />
+      <ChuvaAnimada emoji="🍧" quantidade={12} cor="#a7c7e7" duracao={60} />
     </div>
   );
 }

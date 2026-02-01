@@ -15,71 +15,60 @@ export default function EscolhaCategoria() {
       emoji: "🍮",
       nome: "Pudins Gourmets",
       estilo:
-        "text-[#5c2c00] bg-[#fff0e5] hover:bg-[#ffe5d9] border border-[#f7c59f] shadow-[0_4px_8px_rgba(0,0,0,0.2)]",
+        "text-[#5c2c00] bg-[#fff0e5] hover:bg-[#ffe5d9] border border-[#f7c59f] shadow-md",
     },
     {
       id: "especiais",
       emoji: "✨",
       nome: "Especiais",
       estilo:
-        "text-[#3c2a6e] bg-[#f0f0ff] hover:bg-[#e5e5ff] border border-[#c2b6ff] shadow-[0_4px_8px_rgba(0,0,0,0.2)]",
+        "text-[#3c2a6e] bg-[#f0f0ff] hover:bg-[#e5e5ff] border border-[#c2b6ff] shadow-md",
     },
     {
       id: "geladinhos",
       emoji: "❄️",
       nome: "Geladinhos Gourmets",
       estilo:
-        "text-[#004d66] bg-[#e0f7ff] hover:bg-[#d0f0ff] border border-[#a0e0ff] shadow-[0_4px_8px_rgba(0,0,0,0.2)]",
+        "text-[#004d66] bg-[#e0f7ff] hover:bg-[#d0f0ff] border border-[#a0e0ff] shadow-md",
+    },
+    {
+      id: "picoles",
+      emoji: "🍧",
+      nome: "Picolés Gourmets",
+      estilo:
+        "text-pink-500 bg-[#ffd6e7] hover:bg-[#ffc2dd] border border-[#ff99cc] shadow-md",
     },
   ];
 
   return (
     <div
-      className="min-h-screen w-full flex flex-col items-center justify-start px-4 py-12"
-      style={{
-        backgroundImage: `url(${fundo})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+      className="min-h-screen w-full flex flex-col items-center justify-start bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${fundo})` }}
     >
-      {/* Logo */}
-      <div className="bg-white p-2 rounded-[20%] border-8 border-[#ffffff] shadow-[0_4px_12px_rgba(0,0,0,0.2)] h-[120px] w-[120px] flex items-center justify-center overflow-hidden mt-[40px] mb-4">
+      <div className="bg-white p-2 rounded-[20%] border-8 border-white shadow-lg h-[120px] w-[120px] flex items-center justify-center overflow-hidden mt-10 mb-4">
         <a href="/">
           <img
             src={logo}
             alt="Logo Delícias no Pote"
-            className="h-full w-full object-contain"
+            className="h-full w-full object-contain rounded-[20%]"
           />
         </a>
       </div>
 
-      <h1
-        style={{ fontFamily: '"Caveat Brush", cursive', color: "#401900" }}
-        className="text-[3.2em] mb-[5px]"
-      >
+      <h1 className="font-caveat text-[3.2em] mb-1 mt-2 text-[#401900]">
         Delícias no Pote
       </h1>
 
-      <h2
-        className="text-[2.2em] text-[#c4722d] mt-[5px] text-center p-[12px]"
-        style={{
-          fontFamily: '"Emilys Candy"',
-        }}
-      >
+      <h2 className="font-emilys text-[2.2em] text-[#c4722d] mt-1 mb-2 text-center p-3">
         O que adoça seu dia hoje?
       </h2>
 
-      <div className="flex flex-col text-center gap-[15px] ">
+      <div className="flex flex-col text-center gap-4 mt-6">
         {categorias.map((cat) => (
           <Link
             key={cat.id}
             to={`/${cat.id}`}
-            style={{
-              fontFamily: '"Caveat Brush", cursive',
-              fontWeight: "bold",
-            }}
-            className={`text-[1.5em] px-[40px] py-[15px] rounded-[15px] mb-[10px] no-underline transition duration-300 botao-hover ${cat.estilo} sombra-${cat.id}`}
+            className={`font-caveat font-bold text-xl px-12 py-4 rounded-xl mb-2 no-underline transition-transform duration-300 hover:scale-105 ${cat.estilo}`}
           >
             {cat.emoji} {cat.nome}
           </Link>
@@ -88,13 +77,7 @@ export default function EscolhaCategoria() {
 
       <ChuvaAnimada emoji="🍮" quantidade={15} cor="#db9e32" duracao={60} />
 
-      <p
-        className="text-[1.3rem] text-[#401900] p-[12px] text-center max-w-md"
-        style={{
-          fontFamily: '"Emilys Candy"',
-          fontWeight: "Bold",
-        }}
-      >
+      <p className="font-emilys text-lg text-[#401900] p-3 text-center max-w-md font-bold mt-6">
         Escolha uma categoria deliciosa e descubra nossas opções artesanais
         feitas com carinho 💖
       </p>
