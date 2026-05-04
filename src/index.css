@@ -19,6 +19,77 @@ body {
   padding: 0;
 }
 
+.container-botoes-atalho {
+  width: 100%;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #ffaaad;
+}
+
+.label-atalho {
+  font-size: 0.9rem;
+  color: #db9e32;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.flex-botoes-atalho {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn-atalho {
+  border: none;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-family: "Caveat Brush", cursive;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn-atalho:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn-atalho.copo { background: #fee0ed; color: #ed088b; }
+.btn-atalho.travessa { background: #cce7ff; color: #16658f; }
+
+.destaque-card {
+  border-color: #db9e32 !important;
+  box-shadow: 0 0 25px rgba(219, 158, 50, 0.5) !important;
+  transition: all 0.3s ease;
+}
+
+.btn-ver-produto-picole {
+  background-color: #ff9ccf; 
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-family: "Caveat Brush", cursive;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-ver-produto-picole:hover {
+  background-color: #db2777;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.destaque-picole {
+  border: 3px solid #f472b6 !important;
+  box-shadow: 0 0 20px rgba(244, 114, 182, 0.6) !important;
+  transform: scale(1.03);
+  transition: all 0.4s ease;
+}
+
 html {
   scroll-behavior: smooth;
 }

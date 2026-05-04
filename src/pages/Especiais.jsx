@@ -28,17 +28,56 @@ export default function Especiais() {
     fetchProdutos();
   }, []);
 
+  const scrollToProduct = (id) => {
+    const elemento = document.getElementById(`prod-${id}`);
+    if (elemento) {
+      elemento.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      elemento.classList.add("destaque-card");
+      setTimeout(() => {
+        elemento.classList.remove("destaque-card");
+      }, 2000);
+    }
+  };
+
   return (
     <div className="min-h-screen w-full fundo-pudins relative flex flex-col items-center z-[1]">
       <h1 className="titulo-especial">✨ Especiais</h1>
 
       <div className="caixas-poeticas-container">
-        {Object.entries(textosPoeticos).map(([nome, texto]) => (
-          <div key={nome} className="caixa-poetica">
-            <h3 className="poetico-nome"> {nome}</h3>
-            <p className="poetico-texto">{texto}</p>
-          </div>
-        ))}
+        {Object.entries(textosPoeticos).map(([nome, texto]) => {
+          const produtosRelacionados = produtos.filter(
+            (p) => p.name.toLowerCase() === nome.toLowerCase(),
+          );
+
+          return (
+            <div key={nome} className="caixa-poetica">
+              <h3 className="poetico-nome">{nome}</h3>
+              <p className="poetico-texto">{texto}</p>
+
+              {produtosRelacionados.length > 0 && (
+                <div className="container-botoes-atalho">
+                  <p className="label-atalho">Ver opções disponíveis:</p>
+                  <div className="flex-botoes-atalho">
+                    {produtosRelacionados.map((prod) => (
+                      <button
+                        key={prod.id}
+                        className={`btn-atalho ${prod.tipo}`}
+                        onClick={() => scrollToProduct(prod.id)}
+                      >
+                        {prod.tipo === "copo" && "🥤 Copo"}
+                        {prod.tipo === "travessa" && " 🥣 Travessa"}
+                        {prod.tipo === "porcao" && "🍰 Individual"}
+                        {!["copo", "travessa", "porcao"].includes(prod.tipo) &&
+                          "✨ Ver"}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       <section className="secao-cardapio">
@@ -46,6 +85,7 @@ export default function Especiais() {
           {produtos.map((item) => (
             <div
               key={item.id}
+              id={`prod-${item.id}`}
               className="card-item produto-card card-especiais relative"
             >
               {item.tipo && (
@@ -57,9 +97,7 @@ export default function Especiais() {
               )}
 
               <img
-                src={`${
-                  import.meta.env.VITE_SUPABASE_URL
-                }/storage/v1/object/public/produtos/${item.image_url}`}
+                src={`${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/produtos/${item.image_url}`}
                 alt={item.name}
                 className="foto-produto"
               />
@@ -78,13 +116,10 @@ export default function Especiais() {
                     );
                   }
 
-                  const pesoOuTipo = partes[0];
-                  const valor = partes[1];
-
                   return (
                     <div key={i} className="preco-linha">
-                      <span className="tag-peso">{pesoOuTipo}</span>
-                      <span className="tag-preco">R${valor}</span>
+                      <span className="tag-peso">{partes[0]}</span>
+                      <span className="tag-preco">R${partes[1]}</span>
                     </div>
                   );
                 })}

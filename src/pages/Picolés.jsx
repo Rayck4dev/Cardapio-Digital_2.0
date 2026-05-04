@@ -9,8 +9,15 @@ export default function Picolés() {
   const textosPoeticos = {
     "Pudim de Chocolate Branco com Caramelo Crocante":
       "Um picolé cremoso sabor pudim tradicional, trufado com calda de caramelo, cobertura com uma camada de chocolate branco com caramelo crocante",
+
     "Pudim de Chocolate ao Leite":
       "Um picolé cremoso sabor pudim tradicional, trufado com calda de caramelo, cobertura com uma camada crocante de chocolate ao leite",
+
+    Prestígio:
+      "Um picolé cremoso sabor Prestígio, trufado com creme de brigadeiro, coberto com uma camada crocante de chocolate ao leite",
+
+    "Ninho com Nutella":
+      "Um picolé cremoso sabor ninho, trufado com Nutella, coberto com uma camada crocante de chocolate ao leite.",
   };
 
   useEffect(() => {
@@ -34,20 +41,48 @@ export default function Picolés() {
     fetchProdutos();
   }, []);
 
+  const scrollToProduct = (id) => {
+    const elemento = document.getElementById(`prod-${id}`);
+    if (elemento) {
+      elemento.scrollIntoView({ behavior: "smooth", block: "center" });
+      elemento.classList.add("destaque-picole");
+      setTimeout(() => {
+        elemento.classList.remove("destaque-picole");
+      }, 2000);
+    }
+  };
+
   return (
     <div className="min-h-screen w-full bg-pink-100 relative flex flex-col items-center z-[1]">
       <h1 className="titulo-cardapio text-pudimGelado">🍧 Picolés Gourmet</h1>
 
       <div className="caixas-poeticas-container mb-10">
-        {Object.entries(textosPoeticos).map(([nome, texto]) => (
-          <div
-            key={nome}
-            className="caixa-poetica bg-[#fff8e7] shadow-md rounded-lg p-4 mb-4"
-          >
-            <h3 className="poetico-nome text-[#5a3e2b]">{nome}</h3>
-            <p className="poetico-texto text-[#3b82f6]">{texto}</p>
-          </div>
-        ))}
+        {Object.entries(textosPoeticos).map(([nome, texto]) => {
+          const produtoAlvo = produtos.find(
+            (p) => p.name.toLowerCase() === nome.toLowerCase(),
+          );
+
+          return (
+            <div
+              key={nome}
+              className="caixa-poetica bg-[#fff8e7] shadow-md rounded-lg p-4 mb-4 flex flex-col items-center"
+            >
+              <h3 className="poetico-nome text-[#5a3e2b]">{nome}</h3>
+              <p className="poetico-texto text-[#3b82f6] text-center mb-4">
+                {texto}
+              </p>
+
+              {produtoAlvo && (
+                <button
+                  onClick={() => scrollToProduct(produtoAlvo.id)}
+                  className="btn-ver-produto-picole"
+                >
+                  Quero esse! 🍧
+                </button>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       <section className="secao-cardapio">
@@ -55,12 +90,11 @@ export default function Picolés() {
           {produtos.map((item) => (
             <div
               key={item.id}
+              id={`prod-${item.id}`}
               className="card-item card-picole produto-card relative bg-gradient-to-b from-[#f5deb3] to-[#a7c7e7]"
             >
               <img
-                src={`${
-                  import.meta.env.VITE_SUPABASE_URL
-                }/storage/v1/object/public/produtos/${item.image_url}`}
+                src={`${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/produtos/${item.image_url}`}
                 alt={item.name}
                 className="foto-produto"
               />
@@ -70,22 +104,16 @@ export default function Picolés() {
               <div className="preco-container">
                 {item.price.split("|").map((opcao, i) => {
                   const partes = opcao.trim().split(" R$");
-
-                  if (partes.length === 1) {
-                    return (
-                      <div key={i} className="preco-linha">
-                        <span className="tag-preco">{partes[0]}</span>
-                      </div>
-                    );
-                  }
-
-                  const pesoOuTipo = partes[0];
-                  const valor = partes[1];
-
                   return (
                     <div key={i} className="preco-linha">
-                      <span className="tag-peso">{pesoOuTipo}</span>
-                      <span className="tag-preco">R${valor}</span>
+                      {partes.length > 1 ? (
+                        <>
+                          <span className="tag-peso">{partes[0]}</span>
+                          <span className="tag-preco">R${partes[1]}</span>
+                        </>
+                      ) : (
+                        <span className="tag-preco">{partes[0]}</span>
+                      )}
                     </div>
                   );
                 })}
