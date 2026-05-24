@@ -1,4 +1,7 @@
 export const textosPoeticos = {
+  "Pudim no Palito":
+    "Pudim tradicional de leite condensado com casquinha crocante de chocolate ao leite",
+
   Banoffe:
     "Uma harmonia deliciosa entre farofa artesanal crocante, doce de leite cremoso, banana fresca e chantininho leve. Finalizado com um toque de cacau ou canela que transforma cada colherada em aconchego.",
 
