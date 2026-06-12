@@ -10,8 +10,9 @@ export default function Footer() {
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-pink-600 hover:text-[#a0522d] transition-colors duration-300 font-audiowide text-sm sm:text-base"
         >
-          <FaInstagram className="text-lg" />© 2026{" "}
-          <span className="underline">Raycka DevLab</span>
+          <p className="font-audiowide text-xs sm:text-sm lg:text-base">
+              © {new Date().getFullYear()} DevLab — All rights reserved.
+            </p>
         </a>
       </div>
     </footer>
