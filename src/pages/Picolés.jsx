@@ -2,23 +2,10 @@ import { useEffect, useState } from "react";
 import { supabase } from "../config/supabaseClient";
 import MenuFlutuante from "../components/MenuFlutuante";
 import ChuvaAnimada from "../components/ChuvaAnimada";
+import { textosPicoles } from "../types/textosPicoles";
 
 export default function Picolés() {
   const [produtos, setProdutos] = useState([]);
-
-  const textosPoeticos = {
-    "Pudim de Chocolate Branco com Caramelo Crocante":
-      "Um picolé cremoso sabor pudim tradicional, trufado com calda de caramelo, cobertura com uma camada de chocolate branco com caramelo crocante",
-
-    "Pudim de Chocolate ao Leite":
-      "Um picolé cremoso sabor pudim tradicional, trufado com calda de caramelo, cobertura com uma camada crocante de chocolate ao leite",
-
-    Prestígio:
-      "Um picolé cremoso sabor Prestígio, trufado com creme de brigadeiro, coberto com uma camada crocante de chocolate ao leite",
-
-    "Ninho com Nutella":
-      "Um picolé cremoso sabor ninho, trufado com Nutella, coberto com uma camada crocante de chocolate ao leite.",
-  };
 
   useEffect(() => {
     document.title = "Picolés | Delicias no Pote";
@@ -57,7 +44,7 @@ export default function Picolés() {
       <h1 className="titulo-cardapio text-pudimGelado">🍧 Picolés Gourmet</h1>
 
       <div className="caixas-poeticas-container mb-10">
-        {Object.entries(textosPoeticos).map(([nome, texto]) => {
+        {Object.entries(textosPicoles).map(([nome, texto]) => {
           const produtoAlvo = produtos.find(
             (p) => p.name.toLowerCase() === nome.toLowerCase(),
           );

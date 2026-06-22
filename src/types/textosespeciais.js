@@ -1,4 +1,4 @@
-export const textosPoeticos = {
+export const textosEspeciais = {
   "Pudim no Palito":
     "Pudim tradicional de leite condensado com casquinha crocante de chocolate ao leite",
 

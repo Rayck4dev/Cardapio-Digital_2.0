@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../config/supabaseClient";
 import MenuFlutuante from "../components/MenuFlutuante";
 import ChuvaAnimada from "../components/ChuvaAnimada";
-import { textosPoeticos } from "../types/textospoeticos";
+import { textosEspeciais } from "../types/textosEspeciais";
 
 export default function Especiais() {
   const [produtos, setProdutos] = useState([]);
@@ -45,7 +45,7 @@ export default function Especiais() {
       <h1 className="titulo-especial">✨ Especiais</h1>
 
       <div className="caixas-poeticas-container">
-        {Object.entries(textosPoeticos).map(([nome, texto]) => {
+        {Object.entries(textosEspeciais).map(([nome, texto]) => {
           const produtosRelacionados = produtos.filter(
             (p) => p.name.toLowerCase() === nome.toLowerCase(),
           );
