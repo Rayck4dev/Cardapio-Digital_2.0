@@ -7,7 +7,7 @@ import EscolhaCategoria from "./pages/EscolhaCategoria.jsx";
 import Pudins from "./pages/Pudins.jsx";
 import Especiais from "./pages/Especiais.jsx";
 import Geladinhos from "./pages/Geladinhos.jsx";
-import Picolés from "./pages/Picolés.jsx";
+import Picolés from "./pages/Picoles.jsx";
 
 // Rotas da ADM
 import Dashboard from "../src/admin/Dashboard.jsx";
