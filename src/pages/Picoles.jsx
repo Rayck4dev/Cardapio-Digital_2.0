@@ -64,7 +64,7 @@ export default function Picolés() {
                   onClick={() => scrollToProduct(produtoAlvo.id)}
                   className="btn-ver-produto-picole"
                 >
-                  Quero esse! 🍧
+                  Quero esse!🍧
                 </button>
               )}
             </div>
