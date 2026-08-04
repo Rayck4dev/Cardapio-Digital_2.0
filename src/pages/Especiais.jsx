@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../config/supabaseClient";
 import MenuFlutuante from "../components/MenuFlutuante";
 import ChuvaAnimada from "../components/ChuvaAnimada";
-import { textosEspeciais } from "../types/textosEspeciais";
+import { textosEspeciais } from "../types/textosespeciais";
 
 export default function Especiais() {
   const [produtos, setProdutos] = useState([]);
