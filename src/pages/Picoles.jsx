@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../config/supabaseClient";
 import MenuFlutuante from "../components/MenuFlutuante";
 import ChuvaAnimada from "../components/ChuvaAnimada";
-import { textosPicoles } from "../types/textosPicoles";
+import { textosPicoles } from "../types/textospicoles";
 
 export default function Picolés() {
   const [produtos, setProdutos] = useState([]);
