@@ -21,10 +21,13 @@ export default function Picolés() {
       "Um picolé cremoso sabor Prestígio, trufado com creme de brigadeiro, coberto com uma camada crocante de chocolate ao leite",
 
     "Ninho com Nutella":
-      "Um picolé cremoso sabor ninho, trufado com Nutella, coberto com uma camada crocante de chocolate ao leite.",
+      "Um picolé cremoso sabor ninho, trufado com Nutella, coberto com uma camada crocante de chocolate ao leite",
 
     "Paçoca com Doce de Leite":
-      "Um picolé cremoso sabor Paçoca, trufado com  Doce de leite, coberto com uma camada crocante de chocolate ao leite.",
+      "Um picolé cremoso sabor Paçoca, trufado com  Doce de leite, coberto com uma camada crocante de chocolate ao leite",
+
+    "Amor Cravejado":
+      "Um picolé cremoso sabor Ninho, trufado com geleia de morango, coberto com uma camada crocante de chocolate branco cravejado",
   };
 
   useEffect(() => {
